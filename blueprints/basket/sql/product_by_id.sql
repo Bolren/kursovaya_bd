@@ -1,0 +1,8 @@
+SELECT
+    prod_id,
+    prod_name,
+    prod_price,
+    prod_measure,
+    prod_category
+FROM supermarket.product
+WHERE prod_id = (%s)

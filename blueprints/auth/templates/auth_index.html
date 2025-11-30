@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input_category</title>
+</head>
+<body>
+<center>
+    <h2>Вы не авторизированны</h2>
+    <p>Введите логин и пароль</p>
+
+    <form action="" method="post">
+        <!--верни управление тому обработчику, который создал форму -->
+        <label for="login">Логин</label>
+        <input type="text" name="login" id="login">
+        <br>
+        <label for="password">Пароль</label>
+        <input type="text" name="password" id="password">
+        <br>
+        {% if again %}<p>Неверный логин или пароль</p>{% endif %}
+        <br>
+        <br>
+
+        <input type="submit" value="Войти">
+    </form>
+</center>
+</body>
+</html>

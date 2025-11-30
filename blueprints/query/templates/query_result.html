@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат запроса</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='sem1.css')}}" type="text/css">
+</head>
+<body>
+<center>
+    <h2>Результат выполнения запроса</h2>
+    <p>
+    <table border="1">
+        <tr class="tab_title">
+            {% for name in results%}
+            <td>{{ name }}</td>
+            {% endfor %}
+        </tr>
+        {% for values in data %}
+        <tr>
+            {% for value in values %}
+            <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    </p>
+</center>
+<p><a href="/">Вернуться в меню</a></p>
+</body>
+</html>

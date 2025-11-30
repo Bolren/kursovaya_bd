@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Запрос</title>
+</head>
+<body>
+<center>
+    <h2>{{ data[0] }}</h2>
+    <p>
+    <form action="/query_result" method="post">
+        <input type="hidden" name="query_id" value="{{ query_id }}">
+        {% for key, value in data[1].items() %}
+        <label for="{{ key }}">{{ value }}:</label>
+        <input type="text" name="{{ key }}" id="{{ key }}">
+        {% endfor %}
+
+        <br><br>
+        <input type="submit" value="Отправить">
+    </form>
+    </p>
+
+
+    <p><a href="/">Вернуться в меню</a></p>
+</center>
+</body>
+</html>
