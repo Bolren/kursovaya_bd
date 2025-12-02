@@ -13,8 +13,10 @@ with open("data/db_config.json") as file:
     app.config["db_config"] = json.load(file)
 with open("data/access.json") as file:
     app.config["db_access"] = json.load(file)
-with open("data/type_query.json", encoding="utf-8") as file:
-    app.config["types"] = json.load(file)
+with open("data/query_types.json", encoding="utf-8") as file:
+    app.config["query_types"] = json.load(file)
+with open("data/report_types.json", encoding="utf-8") as file:
+    app.config["report_types"] = json.load(file)
 
 app.register_blueprint(bp_query)
 app.register_blueprint(bp_auth)

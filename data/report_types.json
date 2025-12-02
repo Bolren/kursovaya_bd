@@ -1,0 +1,34 @@
+{
+  "1": {
+    "title_form": "Загруженность отделов за период",
+    "report_view_file": "department_workload.sql",
+    "report_create_file": "department_workload_report",
+    "tabs_result": [
+      "Специализация отдела",
+      "Число палат",
+      "Готовые палаты",
+      "Всего мест",
+      "Занятые места"
+    ]
+  },
+
+  "2": {
+    "title_form": "Поступившие/выписанные пациенты за период",
+    "report_view_file": "patients_flow.sql",
+    "report_create_file": "patients_flow_report",
+    "tabs_result": [
+      "Количество поступивших",
+      "Количество выписавшихся"
+    ]
+  },
+
+  "3": {
+    "title_form": "Статистика записей по врачам",
+    "report_view_file": "entry_statistics.sql",
+    "report_create_file": "entry_statistics_report",
+    "tabs_result": [
+      "Фамилия врача",
+      "Количество записей"
+    ]
+  }
+}

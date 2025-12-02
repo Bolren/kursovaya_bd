@@ -1,5 +1,5 @@
 import os.path
-from flask import render_template, request, Blueprint
+from flask import render_template, request, Blueprint, current_app
 
 from blueprints.auth.access import group_required
 from database.select import call_proc
@@ -19,33 +19,58 @@ provider = SQLProvider(os.path.join(os.path.dirname(__file__), 'sql'))
 @bp_report.route('/report', methods=['GET'])
 @group_required
 def report_menu():
-    return render_template('report_menu.html')
+    types = current_app.config['report_types']
+    return render_template('report_menu.html', types=types)
 
 @bp_report.route('/report/view', methods=['POST'])
 @group_required
 def report_view():
-    sql_file = "report.sql"
+    report_id = request.form.get('report_id')
+    print(request.form)
+    if not report_id:
+        return render_template('error.html', message="Такого запроса не существует")
+
+    types = current_app.config['report_types']
+    report_info = types.get(report_id)
+
+    sql_file = report_info['report_view_file']
+    tabs_result = report_info['tabs_result']
+
     year = request.form['report_year']
     month = request.form['report_month']
     user_input = {"report_year" : year, "report_month" : month}
+
     result_info = model_route(provider, user_input, sql_file)
     if result_info.status:
-        products = result_info.result
-        prod_title = 'Результат запроса'
-        return render_template('report.html', prod_title=prod_title, products=products)
+        return render_template('report_result.html',
+                               results=tabs_result,
+                               data=result_info.result,
+                               variant="view")
     else:
-        return render_template('order_status.html', message=result_info.err_message)
+        return render_template('error.html', message=result_info.err_message)
 
 @bp_report.route('/report/create', methods=['POST'])
 @group_required
 def report_create():
+    report_id = request.form.get('report_id')
+    print(request.form)
+    if not report_id:
+        return render_template('error.html', message="Такого запроса не существует")
+
+    types = current_app.config['report_types']
+    report_info = types.get(report_id)
+
+    procedure = report_info['report_create_file']
+
     year = request.form['report_year']
     month = request.form['report_month']
     user_input = [year, month]
-    print(year)
-    result = call_proc('new_order_report', user_input)
+
+    result = call_proc(procedure, user_input)
     print(result)
     if result:
-        return render_template('report_result.html', message=result[0][0])
+        return render_template('report_result.html',
+                               message=result[0][0],
+                               variant="create")
     else:
-        return render_template('order_status.html', message='Произошла ошибка при создании отчета')
+        return render_template('error.html', message='Произошла ошибка при создании отчета')

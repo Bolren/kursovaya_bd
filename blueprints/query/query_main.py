@@ -18,7 +18,7 @@ provider = SQLProvider(os.path.join(os.path.dirname(__file__), 'sql'))
 @bp_query.route('/query')
 @group_required
 def query_choose():
-    types = current_app.config['types']
+    types = current_app.config['query_types']
     return render_template('query_choose.html', types=types)
 
 @bp_query.route('/query', methods=['POST'])
@@ -28,16 +28,16 @@ def query_form():
     if not query_id:
         return render_template('error.html', message="Такого запроса не существует")
 
-    types = current_app.config['types']
+    types = current_app.config['query_types']
     query_info = types.get(query_id)
 
-    datas = [query_info['title_form'], query_info['tabs_form']]
-    return render_template("query_form.html", data=datas, query_id=query_id)
+    data = [query_info['title_form'], query_info['tabs_form']]
+    return render_template("query_form.html", data=data, query_id=query_id)
 
 @bp_query.route('/query_result', methods=['POST'])
 @group_required
 def query_result():
-    types = current_app.config['types']
+    types = current_app.config['query_types']
 
     query_id = request.form.get('query_id')
     query_info = types.get(query_id)

@@ -29,7 +29,9 @@ def select_dict(_sql: str, user_input: dict) -> tuple:
 def call_proc(proc, params):
     with DBContextManager(current_app.config['db_config']) as cursor:
         result = None
-        if cursor is None:
+        if type(cursor) == str:
+            result = cursor
+        elif cursor is None:
             raise ValueError('Курсор не создан')
         else:
             cursor.callproc(proc, params)

@@ -7,22 +7,29 @@
 <body>
 <center>
     <form method="post">
+        <label for="report_type">Тип отчёта:</label>
+
+        <select name="report_id" id="report_type">
+            {% for report_id, info in types.items() %}
+                <option value="{{ report_id }}">{{ info.title_form }}</option>
+            {% endfor %}
+        </select><br><br>
+
         <label for="report_year">Год:
-            <input type="number" name="report_year" id="report_year" required>
+            <input type="text" name="report_year" id="report_year" required>
         </label>
         <br>
         <label for="report_month">Месяц:
             <input type="number" name="report_month" id="report_month" min="1" max="12" required>
         </label>
-        <br>
-        <br>
+        <br><br>
 
         <button type="submit" formaction="/report/create">Создать</button>
         <button type="submit" formaction="/report/view">Просмотреть</button>
     </form>
-    <br>
-    <br>
-    <p><a href="/">Главное меню</a></p>
+    <br><br>
+
+    <a href="/">В главное меню</a>
 </center>
 </body>
 </html>
