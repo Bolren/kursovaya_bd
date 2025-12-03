@@ -14,8 +14,8 @@ bp_auth = Blueprint(
 provider = SQLProvider(os.path.join(os.path.dirname(__file__), 'sql'))
 
 @bp_auth.route('/auth', methods=['GET'])
-def auth_index():
-    return render_template('auth_index.html')
+def auth():
+    return render_template('auth.html')
 
 @bp_auth.route('/auth', methods=['POST'])
 def auth_result():
@@ -28,4 +28,4 @@ def auth_result():
         session['user_id'] = result_info.result[0][1]
         return redirect(url_for('main_menu'))
     else:
-        return render_template('auth_index.html', again=True)
+        return render_template('auth.html', again=True)
