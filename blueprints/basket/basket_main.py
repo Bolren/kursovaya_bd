@@ -12,33 +12,10 @@ bp_basket = Blueprint(
 sql_provider = SQLProvider(os.path.join(os.path.dirname(__file__), 'sql'))
 
 
-@bp_basket.route('/basket', methods=['GET', 'POST'])
+@bp_basket.route('/basket', methods=['GET'])
 def basket_menu():
     if 'basket' not in session:
         session['basket'] = {}
-
-    if request.method == 'POST':
-        prod_id = request.form.get('prod_id')
-        if prod_id is not None:
-            product_info = get_product_by_id(sql_provider, int(prod_id))
-            if product_info.status:
-                product = product_info.result
-                basket = session['basket']
-                key = str(product['prod_id'])
-
-                if key in basket:
-                    basket[key]['amount'] += 1
-                else:
-                    basket[key] = {
-                        'prod_id': product['prod_id'],
-                        'prod_name': product['prod_name'],
-                        'prod_price': product['prod_price'],
-                        'amount': 1
-                    }
-
-                session['basket'] = basket
-
-        return redirect(url_for('bp_basket.basket_menu'))
 
     products_info = get_all_products(sql_provider)
     items = products_info.result if products_info.status else []
@@ -48,6 +25,30 @@ def basket_menu():
                            items=items,
                            basket=basket)
 
+
+@bp_basket.route('/basket', methods=['POST'])
+def basket_add():
+    prod_id = request.form.get('prod_id')
+    if prod_id is not None:
+        product_info = get_product_by_id(sql_provider, int(prod_id))
+        if product_info.status:
+            product = product_info.result
+            basket = session['basket']
+            key = str(product['prod_id'])
+
+            if key in basket:
+                basket[key]['amount'] += 1
+            else:
+                basket[key] = {
+                    'prod_id': product['prod_id'],
+                    'prod_name': product['prod_name'],
+                    'prod_price': product['prod_price'],
+                    'amount': 1
+                }
+
+            session['basket'] = basket
+
+    return redirect(url_for('bp_basket.basket_menu'))
 
 @bp_basket.route('/clear_basket')
 def clear_basket():

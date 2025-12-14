@@ -4,24 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4c2031f-b60c-46f5-917d-4f4640be71e4" name="Changes" comment="First commit(50%, queries done)">
-      <change beforePath="$PROJECT_DIR$/.idea/hosplital.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hosplital.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c4c2031f-b60c-46f5-917d-4f4640be71e4" name="Changes" comment="reports fix, etc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/auth/access.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/auth/access.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/auth/auth_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/auth/auth_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/auth/templates/auth_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/auth/templates/auth.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/query/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/query/templates/error.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/report/sql/department_workload.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/report/sql/department_workload.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/report/sql/entry_statistics.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/report/sql/entry_statistics.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/report/sql/patients_flow.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/report/sql/patients_flow.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/access.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/access.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/report_types.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/report_types.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/basket/basket_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/basket/basket_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/report/templates/report_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/report/templates/report_result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/cache_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main_menu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,18 +53,20 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Python.app.executor&quot;: &quot;Run&quot;,
     &quot;Python.app_pc.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dima/PycharmProjects/hosplital/data&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dshte/PycharmProjects/kursovaya_bd/blueprints/patients/templates&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dshte\PycharmProjects\kursovaya_bd\blueprints\patients\templates" />
       <recent name="C:\Users\Dima\PycharmProjects\hosplital\data" />
       <recent name="C:\Users\Dima\PycharmProjects\hosplital\blueprints\query1\templates" />
       <recent name="C:\Users\Dima\PycharmProjects\hosplital\blueprints" />
@@ -116,8 +120,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.app_pc" />
       <item itemvalue="Python.app" />
+      <item itemvalue="Python.app_pc" />
     </list>
   </component>
   <component name="SharedIndexes">
@@ -151,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764531400505</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="reports fix, etc">
+      <option name="closed" value="true" />
+      <created>1764803870387</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1764803870387</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,6 +189,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit(50%, queries done)" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit(50%, queries done)" />
+    <MESSAGE value="reports fix, etc" />
+    <option name="LAST_COMMIT_MESSAGE" value="reports fix, etc" />
   </component>
 </project>

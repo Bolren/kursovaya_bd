@@ -4,7 +4,7 @@ from blueprints.auth.access import login_required
 from blueprints.auth.auth_main import bp_auth
 from blueprints.query.query_main import bp_query
 from blueprints.report.report_main import bp_report
-from blueprints.basket.basket_main import bp_basket
+from blueprints.patients.patients_main import bp_patients
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "you will never guess"
@@ -21,7 +21,7 @@ with open("data/report_types.json", encoding="utf-8") as file:
 app.register_blueprint(bp_query)
 app.register_blueprint(bp_auth)
 app.register_blueprint(bp_report)
-app.register_blueprint(bp_basket)
+app.register_blueprint(bp_patients)
 
 
 @app.route("/", methods=["GET"])

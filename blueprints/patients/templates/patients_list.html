@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Управление пациентами</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          crossorigin="anonymous">
+    <style>
+        .patient-list {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .sort-buttons .btn {
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    <!-- Верхняя панель: Добавление пациента -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h4>Добавить нового пациента</h4>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('bp_patients.patients_menu') }}">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="surname" class="form-label">Фамилия пациента *</label>
+                        <input type="text" class="form-control" id="surname" name="surname" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="birthday" class="form-label">Дата рождения *</label>
+                        <input type="date" class="form-control" id="birthday" name="birthday" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="diagnosis" class="form-label">Диагноз *</label>
+                        <input type="text" class="form-control" id="diagnosis" name="diagnosis" required>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="receipt_date" class="form-label">Дата поступления *</label>
+                        <input type="date" class="form-control" id="receipt_date" name="receipt_date" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="doctor" class="form-label">Лечащий врач</label>
+                        <input type="text" class="form-control" id="doctor" name="doctor">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-success">Добавить пациента</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Нижняя панель: Список пациентов -->
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Пациенты в госпитале</h4>
+                </div>
+                <div class="col-md-6 text-end sort-buttons">
+                    <small>Сортировать по:</small>
+                    <a href="{{ url_for('bp_patients.patients_menu', sort_by='surname') }}"
+                       class="btn btn-outline-light btn-sm {% if sort_by == 'surname' %}active{% endif %}">
+                        Фамилии
+                    </a>
+                    <a href="{{ url_for('bp_patients.patients_menu', sort_by='address') }}"
+                       class="btn btn-outline-light btn-sm {% if sort_by == 'address' %}active{% endif %}">
+                        Городу
+                    </a>
+                    <a href="{{ url_for('bp_patients.patients_menu', sort_by='birthday') }}"
+                       class="btn btn-outline-light btn-sm {% if sort_by == 'birthday' %}active{% endif %}">
+                        Дате рождения
+                    </a>
+                    <a href="{{ url_for('bp_patients.patients_menu', sort_by='receipt_date') }}"
+                       class="btn btn-outline-light btn-sm {% if sort_by == 'receipt_date' %}active{% endif %}">
+                        Дате поступления
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body patient-list">
+            {% import 'patients_utils.html' as utils %}
+
+            {% if patients %}
+                {% for patient in patients %}
+                    {{ utils.render_patient(patient, show_discharge=True) }}
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info">
+                    В госпитале нет пациентов.
+                </div>
+            {% endif %}
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>Всего пациентов:</strong> {{ patients|length }}
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="{{ url_for('main_menu') }}" class="btn btn-secondary">Вернуться в меню</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
