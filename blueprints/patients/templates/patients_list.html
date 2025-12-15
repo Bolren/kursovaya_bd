@@ -3,111 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <title>Управление пациентами</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          crossorigin="anonymous">
     <style>
-        .patient-list {
-            max-height: 500px;
-            overflow-y: auto;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
         }
-        .sort-buttons .btn {
-            margin: 2px;
+        .container {
+            width: 100%;
+        }
+        .form-section, .patients-section {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .form-section {
+            background-color: #f5f5f5;
+        }
+        .patients-section {
+            background-color: #fff;
+        }
+        .section-header {
+            background-color: #0066cc;
+            color: white;
+            padding: 10px;
+            margin: -20px -20px 20px -20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        .button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        .button-add {
+            background-color: #28a745;
+            color: white;
+        }
+        .button-save {
+            background-color: #17a2b8;
+            color: white;
+        }
+        .button-clear {
+            background-color: #dc3545;
+            color: white;
+        }
+        .button-remove {
+            background-color: #6c757d;
+            color: white;
+        }
+        .button-back {
+            background-color: #6c757d;
+            color: white;
+        }
+        .patients-count {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .message-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .message-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .ward-option {
+            padding: 5px 0;
         }
     </style>
 </head>
 <body>
-<div class="container mt-4">
-    <!-- Верхняя панель: Добавление пациента -->
-    <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
-            <h4>Добавить нового пациента</h4>
+<div class="container">
+    <!-- Сообщения -->
+    {% if save_message %}
+    <div class="message message-success">
+        {{ save_message }}
+    </div>
+    {% endif %}
+
+    <!-- Верхняя панель: Добавление пациента в сессию -->
+    <div class="form-section">
+        <div class="section-header">
+            <h3>Добавить пациента (в сессию)</h3>
         </div>
-        <div class="card-body">
-            <form method="POST" action="{{ url_for('bp_patients.patients_menu') }}">
-                <div class="row g-3">
-                    <div class="col-md-4">
-                        <label for="surname" class="form-label">Фамилия пациента *</label>
-                        <input type="text" class="form-control" id="surname" name="surname" required>
+
+        <form method="POST" action="{{ url_for('bp_patients.patients_menu') }}">
+            <div style="display: flex; gap: 20px;">
+                <div style="flex: 1;">
+                    <div class="form-group">
+                        <label for="surname">Фамилия *</label>
+                        <input type="text" id="surname" name="surname" required>
                     </div>
-                    <div class="col-md-2">
-                        <label for="birthday" class="form-label">Дата рождения *</label>
-                        <input type="date" class="form-control" id="birthday" name="birthday" required>
+
+                    <div class="form-group">
+                        <label for="passport">Паспорт (серия номер) *</label>
+                        <input type="text" id="passport" name="passport" placeholder="1234 567890" required>
                     </div>
-                    <div class="col-md-3">
-                        <label for="diagnosis" class="form-label">Диагноз *</label>
-                        <input type="text" class="form-control" id="diagnosis" name="diagnosis" required>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="receipt_date" class="form-label">Дата поступления *</label>
-                        <input type="date" class="form-control" id="receipt_date" name="receipt_date" required>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="doctor" class="form-label">Лечащий врач</label>
-                        <input type="text" class="form-control" id="doctor" name="doctor">
+
+                    <div class="form-group">
+                        <label for="address">Город *</label>
+                        <input type="text" id="address" name="address" required>
                     </div>
                 </div>
-                <div class="mt-3">
-                    <button type="submit" class="btn btn-success">Добавить пациента</button>
+
+                <div style="flex: 1;">
+                    <div class="form-group">
+                        <label for="birthday">Дата рождения *</label>
+                        <input type="date" id="birthday" name="birthday" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="diagnosis">Диагноз *</label>
+                        <input type="text" id="diagnosis" name="diagnosis" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ward_id">Выберите палату *</label>
+                        <select id="ward_id" name="ward_id" required>
+                            <option value="">-- Выберите палату --</option>
+                            {% if available_wards %}
+                                {% for ward in available_wards %}
+                                    <option value="{{ ward.ward_id }}">
+                                        {{ ward.ward_info }} ({{ ward.occupied }}/{{ ward.seats_num }} занято)
+                                    </option>
+                                {% endfor %}
+                            {% else %}
+                                <option value="" disabled>Нет свободных палат</option>
+                            {% endif %}
+                        </select>
+                    </div>
+
+                    <button type="submit" name="add_patient" class="button button-add"
+                            {% if not available_wards %}disabled{% endif %}>
+                        Добавить в сессию
+                    </button>
                 </div>
+            </div>
+        </form>
+
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd;">
+            <form method="POST" action="{{ url_for('bp_patients.patients_menu') }}" style="display: inline;">
+                <button type="submit" name="save_all" class="button button-save"
+                        {% if not session_patients %}disabled{% endif %}>
+                    Сохранить всех пациентов в БД
+                </button>
+            </form>
+
+            <form method="POST" action="{{ url_for('bp_patients.patients_menu') }}" style="display: inline;">
+                <button type="submit" name="clear_session" class="button button-clear"
+                        {% if not session_patients %}disabled{% endif %}>
+                    Очистить сессию
+                </button>
             </form>
         </div>
+
+        <div class="patients-count">
+            Пациентов в сессии: {{ session_patients|length }}
+        </div>
     </div>
 
-    <!-- Нижняя панель: Список пациентов -->
-    <div class="card">
-        <div class="card-header bg-info text-white">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>Пациенты в госпитале</h4>
-                </div>
-                <div class="col-md-6 text-end sort-buttons">
-                    <small>Сортировать по:</small>
-                    <a href="{{ url_for('bp_patients.patients_menu', sort_by='surname') }}"
-                       class="btn btn-outline-light btn-sm {% if sort_by == 'surname' %}active{% endif %}">
-                        Фамилии
-                    </a>
-                    <a href="{{ url_for('bp_patients.patients_menu', sort_by='address') }}"
-                       class="btn btn-outline-light btn-sm {% if sort_by == 'address' %}active{% endif %}">
-                        Городу
-                    </a>
-                    <a href="{{ url_for('bp_patients.patients_menu', sort_by='birthday') }}"
-                       class="btn btn-outline-light btn-sm {% if sort_by == 'birthday' %}active{% endif %}">
-                        Дате рождения
-                    </a>
-                    <a href="{{ url_for('bp_patients.patients_menu', sort_by='receipt_date') }}"
-                       class="btn btn-outline-light btn-sm {% if sort_by == 'receipt_date' %}active{% endif %}">
-                        Дате поступления
-                    </a>
-                </div>
-            </div>
+    <!-- Средняя панель: Пациенты в сессии -->
+    <div class="patients-section">
+        <div class="section-header" style="background-color: #28a745;">
+            <h3>Пациенты в сессии (новые, не сохраненные в БД)</h3>
         </div>
-        <div class="card-body patient-list">
-            {% import 'patients_utils.html' as utils %}
 
-            {% if patients %}
-                {% for patient in patients %}
-                    {{ utils.render_patient(patient, show_discharge=True) }}
+        {% if session_patients %}
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Фамилия</th>
+                    <th>Паспорт</th>
+                    <th>Город</th>
+                    <th>Дата рождения</th>
+                    <th>Диагноз</th>
+                    <th>Палата</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in session_patients %}
+                <tr>
+                    <td>{{ patient.session_id }}</td>
+                    <td>{{ patient.surname }}</td>
+                    <td>{{ patient.passport }}</td>
+                    <td>{{ patient.address }}</td>
+                    <td>{{ patient.birthday }}</td>
+                    <td>{{ patient.diagnosis }}</td>
+                    <td>{{ patient.ward_info }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('bp_patients.remove_from_session') }}"
+                              style="display: inline;">
+                            <input type="hidden" name="session_id" value="{{ patient.session_id }}">
+                            <button type="submit" class="button button-remove">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
+                </tr>
                 {% endfor %}
-            {% else %}
-                <div class="alert alert-info">
-                    В госпитале нет пациентов.
-                </div>
-            {% endif %}
-        </div>
-        <div class="card-footer">
-            <div class="row">
-                <div class="col-md-6">
-                    <strong>Всего пациентов:</strong> {{ patients|length }}
-                </div>
-                <div class="col-md-6 text-end">
-                    <a href="{{ url_for('main_menu') }}" class="btn btn-secondary">Вернуться в меню</a>
-                </div>
-            </div>
-        </div>
+            </tbody>
+        </table>
+        {% else %}
+        <p>В сессии нет пациентов. Добавьте пациентов с помощью формы выше.</p>
+        {% endif %}
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{{ url_for('main_menu') }}" class="button button-back">
+            Вернуться в главное меню
+        </a>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
