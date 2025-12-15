@@ -1,5 +1,16 @@
 {
   "1": {
+    "title_form": "Поступившие/выписанные пациенты за период",
+    "report_view_file": "patients_flow.sql",
+    "report_create_file": "patients_flow_report",
+    "tabs_result": [
+      "Отделение",
+      "Количество поступивших",
+      "Количество выписавшихся"
+    ]
+  },
+
+  "2": {
     "title_form": "Загруженность отделов за период",
     "report_view_file": "department_workload.sql",
     "report_create_file": "department_workload_report",
@@ -8,17 +19,6 @@
       "Число палат",
       "Занятые палаты",
       "Занятые места"
-    ]
-  },
-
-  "2": {
-    "title_form": "Поступившие/выписанные пациенты за период",
-    "report_view_file": "patients_flow.sql",
-    "report_create_file": "patients_flow_report",
-    "tabs_result": [
-      "Отделение",
-      "Количество поступивших",
-      "Количество выписавшихся"
     ]
   },
 

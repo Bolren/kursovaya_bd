@@ -32,7 +32,6 @@ def row_to_ward_dict(row):
 
 
 def get_available_wards():
-    """Получает список свободных палат (не полностью занятых)"""
     err_message = ''
     _sql = sql_provider.get('available_wards.sql')
     rows = select_dict(_sql, {})
@@ -46,7 +45,6 @@ def get_available_wards():
 
 
 def save_patients_to_db(patients_list):
-    """Сохраняет список пациентов в БД"""
     err_message = ''
 
     if not patients_list:
@@ -58,25 +56,26 @@ def save_patients_to_db(patients_list):
             saved_patients = []
 
             for patient in patients_list:
-                # 1. Добавляем пациента в таблицу patients
-                sql_patient = sql_provider.get('add_patient.sql')
-                cursor.execute(sql_patient, {
-                    'surname': patient['surname'],
-                    'passport': patient['passport'],
-                    'address': patient['address'],
-                    'birthday': patient['birthday'],
-                    'ward_id': patient['ward_id'],
-                    'doc_id': None  # По умолчанию без врача
-                })
-                patient_id = cursor.lastrowid
+                print(patient)
 
-                # 2. Добавляем запись в medical_history
+                # Добавляем пациента в patients
+                sql_patient = sql_provider.get('add_patient.sql')
+                cursor.execute(sql_patient, (
+                    patient['surname'],
+                    patient['passport'],
+                    patient['address'],
+                    patient['birthday'],
+                    patient['ward_id']
+                ))
+                patient_id = cursor.lastrowid
+                print(patient)
+                # Добавляем запись в medical_history
                 sql_history = sql_provider.get('add_medical_history.sql')
-                cursor.execute(sql_history, {
-                    'patient_id': patient_id,
-                    'diagnosis': patient['diagnosis'],
-                    'receipt_date': date.today()
-                })
+                cursor.execute(sql_history, (
+                    patient_id,
+                    patient['diagnosis'],
+                    date.today()
+                ))
 
                 saved_patients.append({
                     'patient_id': patient_id,
