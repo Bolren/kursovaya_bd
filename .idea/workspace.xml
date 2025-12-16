@@ -4,40 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4c2031f-b60c-46f5-917d-4f4640be71e4" name="Changes" comment="reports fix, etc">
+    <list default="true" id="c4c2031f-b60c-46f5-917d-4f4640be71e4" name="Changes" comment="First commit(50%, queries done)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/basket_main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/model_products.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/sql/insert_order.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/sql/insert_order_item.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/sql/product_by_id.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/sql/products_all.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/templates/basket_order_list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/templates/basket_utils.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/templates/order_status.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/blueprints/patients/model_patients.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/model_patients.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blueprints/patients/patients_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/patients_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/add_medical_history.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/sql/add_medical_history.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/add_patient.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/sql/add_patient.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/available_wards.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/sql/available_wards.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/discharge_patient.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/patient_by_id.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/patients_all.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/add_medical_history.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/add_patient.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/blueprints/patients/templates/patients_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/templates/patients_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/report_types.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/report_types.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/patients/templates/patients_utils.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-        <option value="HTML File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,8 +29,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Bolren/kursovaya_bd.git&quot;,
-    &quot;accountId&quot;: &quot;1b874216-8681-46e1-a0e7-ad898e5df557&quot;
+    &quot;url&quot;: &quot;https://github.com/Bolren/kursovaya_bd&quot;,
+    &quot;accountId&quot;: &quot;1154d254-3451-4c17-b090-9d88a16b7c9c&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -68,26 +47,22 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app_pc.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dshte/PycharmProjects/kursovaya_bd/blueprints/patients/templates&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dima/PycharmProjects/hosplital/data&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\dshte\PycharmProjects\kursovaya_bd\blueprints\patients\templates" />
       <recent name="C:\Users\Dima\PycharmProjects\hosplital\data" />
       <recent name="C:\Users\Dima\PycharmProjects\hosplital\blueprints\query1\templates" />
       <recent name="C:\Users\Dima\PycharmProjects\hosplital\blueprints" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app_pc">
+  <component name="RunManager">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python">
       <module name="hosplital" />
       <option name="ENV_FILES" value="" />
@@ -97,7 +72,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.13" />
+      <option name="SDK_NAME" value="Python 3.14 (hosplital)" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Dima\PycharmProjects\hosplital" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -111,33 +86,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="app_pc" type="PythonConfigurationType" factoryName="Python">
-      <module name="hosplital" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.13" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\dshte\PycharmProjects\kursovaya_bd" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Python.app" />
-      <item itemvalue="Python.app_pc" />
-    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -170,41 +118,11 @@
       <option name="project" value="LOCAL" />
       <updated>1764531400505</updated>
     </task>
-    <task id="LOCAL-00003" summary="reports fix, etc">
-      <option name="closed" value="true" />
-      <created>1764803870387</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1764803870387</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="886fe5ad-500a-4d01-8ea2-36d3a57b184a" value="TOOL_WINDOW" />
-      </map>
-    </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="886fe5ad-500a-4d01-8ea2-36d3a57b184a">
-          <value>
-            <State />
-          </value>
-        </entry>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit(50%, queries done)" />
-    <MESSAGE value="reports fix, etc" />
-    <option name="LAST_COMMIT_MESSAGE" value="reports fix, etc" />
+    <option name="LAST_COMMIT_MESSAGE" value="First commit(50%, queries done)" />
   </component>
 </project>

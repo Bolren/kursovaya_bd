@@ -1,7 +1,7 @@
 import os
 from flask import Blueprint, render_template, request, redirect, url_for, session, current_app
 from database.sql_provider import SQLProvider
-from blueprints.patients.model_patients import get_available_wards, save_patients_to_db
+from blueprints.patients.model_patients import get_patients_without_ward, get_available_wards, assign_ward_to_patient
 
 bp_patients = Blueprint(
     'bp_patients',
@@ -13,71 +13,28 @@ sql_provider = SQLProvider(os.path.join(os.path.dirname(__file__), 'sql'))
 
 @bp_patients.route('/patients', methods=['GET', 'POST'])
 def patients_menu():
-    if 'patients_session' not in session:
-        session['patients_session'] = []
+    message = ''
+    patients_result = get_patients_without_ward()
+    patients = patients_result.result if patients_result.status else []
 
     wards_result = get_available_wards()
     available_wards = wards_result.result if wards_result.status else []
 
     if request.method == 'POST':
-        if 'add_patient' in request.form:
-            surname = request.form.get('surname')
-            passport = request.form.get('passport')
-            address = request.form.get('address')
-            birthday = request.form.get('birthday')
-            diagnosis = request.form.get('diagnosis')
-            ward_id = request.form.get('ward_id')
+        patient_id = request.form.get('patient_id')
+        ward_id = request.form.get('ward_id')
 
-            if all([surname, passport, address, birthday, diagnosis, ward_id]):
-                selected_ward = next((w for w in available_wards if str(w['ward_id']) == ward_id), None)
+        if patient_id and ward_id:
+            assign_result = assign_ward_to_patient(patient_id, ward_id)
 
-                new_patient = {
-                    'surname': surname,
-                    'passport': passport,
-                    'address': address,
-                    'birthday': birthday,
-                    'diagnosis': diagnosis,
-                    'ward_id': ward_id,
-                    'ward_info': selected_ward['ward_info'] if selected_ward else f"Палата {ward_id}",
-                    'session_id': len(session['patients_session']) + 1
-                }
-                session['patients_session'].append(new_patient)
-                session.modified = True
+            if assign_result.status:
+                message = "Палата успешно назначена пациенту"
+            else:
+                message = f"Ошибка при назначении палаты: {assign_result.err_message}"
 
-        elif 'save_all' in request.form:
-            session_patients = session.get('patients_session', [])
-
-            if session_patients:
-                save_result = save_patients_to_db(session_patients)
-
-                if save_result.status:
-                    session['patients_session'] = []
-                    session.modified = True
-                    session['save_message'] = f"Успешно сохранено {len(session_patients)} пациентов"
-                else:
-                    session['save_message'] = f"Ошибка при сохранении: {save_result.err_message}"
-
-        elif 'clear_session' in request.form:
-            session['patients_session'] = []
-            session.modified = True
-
-    session_patients = session.get('patients_session', [])
-
-    save_message = session.pop('save_message', None)
+            return redirect(url_for('bp_patients.patients_menu'))
 
     return render_template('patients_list.html',
-                           session_patients=session_patients,
+                           patients=patients,
                            available_wards=available_wards,
-                           save_message=save_message)
-
-
-@bp_patients.route('/remove_from_session', methods=['POST'])
-def remove_from_session():
-    session_id = request.form.get('session_id')
-    if session_id:
-        session_patients = session.get('patients_session', [])
-        session['patients_session'] = [p for p in session_patients
-                                       if p['session_id'] != int(session_id)]
-        session.modified = True
-
-    return redirect(url_for('bp_patients.patients_menu'))
+                           message=message)
