@@ -11,14 +11,13 @@
   },
 
   "2": {
-    "title_form": "Загруженность отделов за период",
-    "report_view_file": "department_workload.sql",
+    "title_form": "Количество пациентов врачей за период",
+    "report_view_file": "doctors_workload.sql",
     "report_create_file": "department_workload_report",
     "tabs_result": [
-      "Специализация отдела",
-      "Число палат",
-      "Занятые палаты",
-      "Занятые места"
+      "ID врача",
+      "Фамилия",
+      "Число пациентов"
     ]
   },
 

@@ -18,6 +18,7 @@ def select_list(_sql: str, param_list: list) -> tuple:
                 result = cursor.fetchall()
     return result
 
+
 def select_dict(_sql: str, user_input: dict) -> tuple:
     user_list = []
     for key in user_input:
@@ -25,6 +26,7 @@ def select_dict(_sql: str, user_input: dict) -> tuple:
     print('user_list = in dict ', user_list)
     result = select_list(_sql, user_list)
     return result
+
 
 def call_proc(proc, params):
     with DBContextManager(current_app.config['db_config']) as cursor:

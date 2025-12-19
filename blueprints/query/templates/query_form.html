@@ -5,24 +5,23 @@
     <title>Запрос</title>
 </head>
 <body>
-<center>
+<div style="text-align: center;">
     <h2>{{ data[0] }}</h2>
-    <p>
+
     <form action="/query_result" method="post">
         <input type="hidden" name="query_id" value="{{ query_id }}">
-        {% for key, value in data[1].items() %}
-        <label for="{{ key }}">{{ value }}:</label>
-        <input type="text" name="{{ key }}" id="{{ key }}">
-        {% endfor %}
+            {% for key, value in data[1].items() %}
+                <label for="{{ key }}">{{ value }}:</label>
+                <input type="text" name="{{ key }}" id="{{ key }}">
+            {% endfor %}
 
-        <br><br>
+            <br><br>
         <input type="submit" value="Отправить">
     </form>
-    </p>
-
+    <br>
 
     <a href="/query">К запросам</a><br>
     <a href="/">В главное меню</a>
-</center>
+</div>
 </body>
 </html>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Input_category</title>
+    <title>Аутентификация</title>
 </head>
 <body>
-<center>
-    <h2>Вы не авторизированны</h2>
+<div style="text-align: center;">
+    <h2>Вы не авторизованы</h2>
     <p>Введите логин и пароль</p>
 
     <form action="" method="post">
@@ -15,13 +15,19 @@
         <br>
         <label for="password">Пароль</label>
         <input type="text" name="password" id="password">
-        <br>
-        {% if again %}<p>Неверный логин или пароль</p>{% endif %}
-        <br>
-        <br>
+        <br><br>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <br><br>
 
         <input type="submit" value="Войти">
     </form>
-</center>
+</div>
 </body>
 </html>

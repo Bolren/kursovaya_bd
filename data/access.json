@@ -1,17 +1,17 @@
 {
-  "doctor": [
-    "bp_auth",
+  "head": [
     "bp_report.report_menu",
-    "bp_report.report_create",
-    "bp_query.query_choose",
-    "bp_query.query_result"
-  ],
-  "chief": [
-    "bp_auth",
-    "bp_report.report_menu",
-    "bp_report.report_create",
     "bp_report.report_view",
-    "bp_query.query_choose",
-    "bp_query.query_result"
+    "bp_query.query_choose"
+  ],
+
+  "doctor": [
+    "bp_report.report_menu",
+    "bp_report.report_create",
+    "bp_query.query_choose"
+  ],
+
+  "nurse": [
+    "bp_patients.patients_menu"
   ]
 }

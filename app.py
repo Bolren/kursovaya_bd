@@ -1,6 +1,6 @@
 import json
 from flask import Flask, render_template, session
-from blueprints.auth.access import login_required
+from access import login_required
 from blueprints.auth.auth_main import bp_auth
 from blueprints.query.query_main import bp_query
 from blueprints.report.report_main import bp_report
@@ -27,7 +27,9 @@ app.register_blueprint(bp_patients)
 @app.route("/", methods=["GET"])
 @login_required
 def main_menu():
-    return render_template("main_menu.html")
+    login = session.get("login")
+    user_role = session.get("user_group")
+    return render_template("main_menu.html", user=login, user_role=user_role)
 
 @app.route("/exit", methods=["GET"])
 def exit_page():

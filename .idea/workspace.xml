@@ -4,27 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4c2031f-b60c-46f5-917d-4f4640be71e4" name="Changes" comment="reports fix, etc">
+    <list default="true" id="c4c2031f-b60c-46f5-917d-4f4640be71e4" name="Changes" comment="100%, business fix left">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/basket_main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/model_products.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/sql/insert_order.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/sql/insert_order_item.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/sql/product_by_id.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/sql/products_all.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/templates/basket_order_list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/templates/basket_utils.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/basket/templates/order_status.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/patients/model_patients.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/model_patients.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/auth/access.py" beforeDir="false" afterPath="$PROJECT_DIR$/access.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/auth/auth_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/auth/auth_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/auth/sql/login.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/auth/sql/login.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/auth/templates/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/auth/templates/auth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/auth/templates/unauth.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/access_denied.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/patients/model_patients.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/blueprints/patients/patients_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/patients_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/add_medical_history.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/sql/add_medical_history.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/add_patient.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/sql/add_patient.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/add_medical_history.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/add_patient.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/available_wards.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/sql/available_wards.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/discharge_patient.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/patient_by_id.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/patients/sql/patients_all.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/blueprints/patients/templates/patients_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/templates/patients_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/patients/templates/patients_utils.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/patients/templates/status_message.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/patients/templates/error_patients.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/query/query_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/query/query_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/query/sql/doctors_hired_year.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/query/sql/doctors_hired_in_Nyears.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/query/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/query/templates/error_query.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/query/templates/query_choose.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/query/templates/query_choose.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/query/templates/query_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/query/templates/query_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/query/templates/query_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/query/templates/query_result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/report/report_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/report/report_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/report/sql/department_workload.sql" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/report/sql/doctors_workload.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/report/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/report/templates/error_report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/report/templates/report_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/report/templates/report_menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/report/templates/report_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/report/templates/report_result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/access.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/access.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/query_types.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/query_types.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/report_types.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/report_types.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/select.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/select.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/exit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/exit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main_menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main_menu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +85,7 @@
     &quot;Python.app.executor&quot;: &quot;Run&quot;,
     &quot;Python.app_pc.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/dshte/PycharmProjects/kursovaya_bd/blueprints/patients/templates&quot;,
@@ -85,6 +98,11 @@
       <recent name="C:\Users\Dima\PycharmProjects\hosplital\data" />
       <recent name="C:\Users\Dima\PycharmProjects\hosplital\blueprints\query1\templates" />
       <recent name="C:\Users\Dima\PycharmProjects\hosplital\blueprints" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dshte\PycharmProjects\kursovaya_bd\blueprints\patients\templates" />
+      <recent name="C:\Users\dshte\PycharmProjects\kursovaya_bd\templates" />
+      <recent name="C:\Users\dshte\PycharmProjects\kursovaya_bd" />
     </key>
   </component>
   <component name="RunManager" selected="Python.app_pc">
@@ -178,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764803870387</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="100%, business fix left">
+      <option name="closed" value="true" />
+      <created>1765841774331</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765841774331</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -205,6 +231,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit(50%, queries done)" />
     <MESSAGE value="reports fix, etc" />
-    <option name="LAST_COMMIT_MESSAGE" value="reports fix, etc" />
+    <MESSAGE value="100%, business fix left" />
+    <option name="LAST_COMMIT_MESSAGE" value="100%, business fix left" />
   </component>
 </project>

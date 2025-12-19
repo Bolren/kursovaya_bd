@@ -1,5 +1,5 @@
 import os.path
-from flask import render_template, request, Blueprint, redirect, url_for, session
+from flask import render_template, request, Blueprint, redirect, url_for, session, flash
 from database.sql_provider import SQLProvider
 from database.model_route import model_route
 
@@ -26,6 +26,8 @@ def auth_result():
     if result_info.status:
         session['user_group'] = result_info.result[0][0]
         session['user_id'] = result_info.result[0][1]
+        session['login'] = result_info.result[0][2]
         return redirect(url_for('main_menu'))
     else:
-        return render_template('auth.html', again=True)
+        flash('Неверный логин или пароль')
+        return redirect(url_for('bp_auth.auth'))

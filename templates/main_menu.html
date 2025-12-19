@@ -5,20 +5,23 @@
     <title>Главное меню</title>
 </head>
 <body>
-<center>
+<div style="text-align: center;">
     <h2>Главное меню</h2>
     <br>
 
-    <a href="/patients">Работа с пациентами</a>
+    <a href="/patients">Распределение пациентов</a>
     <br><br>
 
-    <a href="/query">Параметризованный запрос</a>
+    <a href="/query">Работа с запросами</a>
     <br><br>
 
     <a href="/report">Работа с отчётами</a>
     <br><br>
 
     <a href="/exit">Выход из системы</a>
-</center>
+    <br><br>
+
+    <p>Текущий пользователь: {{ user }}({{ user_role }})</p>
+</div>
 </body>
 </html>

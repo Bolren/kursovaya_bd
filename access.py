@@ -23,7 +23,7 @@ def group_required(func):
             if user_role in access and user_request in access[user_role]:
                 return func(*args, **kwargs)
             else:
-                return render_template('unauth.html')
+                return render_template('access_denied.html')
         return redirect(url_for('bp_auth.auth'))
 
     return wrapper

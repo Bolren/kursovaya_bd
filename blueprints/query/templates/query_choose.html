@@ -5,25 +5,28 @@
     <title>Параметризованный запрос</title>
 </head>
 <body>
+<div style="text-align: center;">
+    <h2>Выберите параметризованный запрос:</h2>
 
-<h2>Выберите параметризованный запрос:</h2>
+    <form method="post" action="/query">
+        <ul style="list-style-type: none; display: inline-block; text-align: left;">
+            {% for query_id, info in types.items() %}
+            <li>
+                <label>
+                    <input type="radio" name="query_id" value="{{ query_id }}">
+                    {{ query_id }} — {{ info.title_form }}
+                </label>
+            </li>
+            {% endfor %}
+        </ul>
+        <br>
 
-<form method="post" action="/query">
-    <ul style="list-style-type:none;">
-        {% for query_id, info in types.items() %}
-        <li>
-            <label>
-                <input type="radio" name="query_id" value="{{ query_id }}">
-                {{ query_id }} — {{ info.title_form }}
-            </label>
-        </li>
-        {% endfor %}
-    </ul>
-
-    <button type="submit">Далее</button>
-</form>
+        <button type="submit">Выбрать</button>
+    </form>
+    <br>
 
 
-<a href="/">В главное меню</a>
+    <a href="/">В главное меню</a>
+</div>
 </body>
 </html>

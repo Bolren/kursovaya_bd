@@ -1,9 +1,9 @@
 {
   "1": {
-    "title_form": "Врачи, принятые на работу в N году",
-    "sql_file": "doctors_hired_year.sql",
+    "title_form": "Врачи, принятые на работу за последние N лет",
+    "sql_file": "doctors_hired_in_Nyears.sql",
     "tabs_form": {
-      "year": "Год"
+      "year": "Число лет"
     },
     "tabs_result": [
       "ID врача",
