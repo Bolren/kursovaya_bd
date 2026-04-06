@@ -1,0 +1,43 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `entry_statistics_report`(report_year int, report_month int)
+BEGIN
+	declare doctor_id integer;
+    declare entries_summa integer;
+    declare done integer default 0;
+    declare record_exists integer default 0;
+
+    declare entries cursor for
+		SELECT
+		d.doc_id,
+		COUNT(e.entry_id) AS total_notes
+		FROM doctors d
+			LEFT JOIN history_entries e ON d.doc_id = e.doc_id
+            WHERE d.dismiss_date IS NULL
+		GROUP BY d.doc_id
+		ORDER BY total_notes DESC;
+
+    declare continue handler for NOT FOUND set done = 1;
+
+    open entries;
+    fetch entries into doctor_id, entries_summa;
+
+    while done = 0 do
+        select count(*) into record_exists
+        from entry_statistics_reports
+        where doc_id = doctor_id
+		  and r_year = report_year
+          and r_month = report_month;
+
+        if record_exists = 0 then
+            insert into entry_statistics_reports (doc_id, entry_amount, r_month, r_year)
+            values (doctor_id, entries_summa, report_month, report_year);
+            select "Отчёт успешно создан";
+        else
+            select "ERROR. Отчёт за данный период уже существует";
+        end if;
+
+        set record_exists = 0;
+        fetch entries into doctor_id, entries_summa;
+    end while;
+
+    close entries;
+END

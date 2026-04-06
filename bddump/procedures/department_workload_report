@@ -1,0 +1,57 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `department_workload_report`(report_year int, report_month int)
+BEGIN
+	declare department_id integer;
+    declare reserved_wards integer;
+    declare seats_occupied integer;
+    declare done integer default 0;
+    declare record_exists integer default 0;
+
+    declare occupation cursor for
+        SELECT
+			d.dep_id,
+			MAX(daily_patients.occupied_wards) AS occupied_wards_at_peak,
+			MAX(daily_patients.patient_count) AS peak_load
+		FROM department d
+		JOIN wards w ON d.dep_id = w.dep_id
+		JOIN (
+			SELECT
+				w.dep_id,
+				COUNT(DISTINCT h.patient_id) AS patient_count,
+                COUNT(DISTINCT w.ward_id) AS occupied_wards
+			FROM wards w
+				JOIN patients p ON w.ward_id = p.ward_id
+				JOIN medical_history h ON p.patient_id = h.patient_id
+			WHERE YEAR(h.receipt_date) = report_year
+				AND MONTH(h.receipt_date) = report_month
+				AND h.receipt_date <= h.discharge_date
+				OR h.discharge_date IS NULL
+			GROUP BY w.dep_id
+		) daily_patients ON d.dep_id = daily_patients.dep_id
+		GROUP BY d.dep_id;
+
+    declare continue handler for NOT FOUND set done = 1;
+
+    open occupation;
+    fetch occupation into department_id, reserved_wards, seats_occupied;
+
+    while done = 0 do
+        select count(*) into record_exists
+        from department_workload_reports
+        where dep_id = department_id
+		  and r_year = report_year
+          and r_month = report_month;
+
+        if record_exists = 0 then
+            insert into department_workload_reports (dep_id, reserved_wards, seats_taken, r_month, r_year)
+            values (department_id, reserved_wards, seats_occupied, report_month, report_year);
+            select "Отчёт успешно создан";
+        else
+            select "ERROR. Отчёт за данный период уже существует";
+        end if;
+
+        set record_exists = 0;
+        fetch occupation into department_id, reserved_wards, seats_occupied;
+    end while;
+
+    close occupation;
+END
